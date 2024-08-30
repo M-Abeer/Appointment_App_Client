@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { ScrollView } from "react-native";
-
 import {
   View,
   Text,
@@ -14,19 +13,19 @@ const Home = () => {
   const [searchQuery, setSearchQuery] = useState("");
 
   const categories = [
-    { id: "AI", title: "AI/ML Dev", icon: require("../assets/icon.png") },
+    { id: "AI", title: "AI/ML Dev", icon: require("../assets/AI.png") },
 
     {
       id: "Web",
       title: "Web Dev",
-      icon: require("../assets/icon.png"),
+      icon: require("../assets/web.png"),
     },
     {
       id: "App",
       title: "App Dev",
-      icon: require("../assets/icon.png"),
+      icon: require("../assets/mobile.png"),
     },
-    { id: "Game", title: "Game Dev", icon: require("../assets/icon.png") },
+    { id: "Game", title: "Game Dev", icon: require("../assets/game.png") },
   ];
 
   const doctors = [
@@ -36,7 +35,7 @@ const Home = () => {
       specialty: "Full Stack Dev",
       location: "Multan,Pakistan",
       rating: 4.8,
-      avatar: require("../assets/icon.png"),
+      avatar: require("../assets/boy1.png"),
     },
     {
       id: "m-areeb",
@@ -44,7 +43,7 @@ const Home = () => {
       specialty: "ML Engineer",
       location: "London, England",
       rating: 4.5,
-      avatar: require("../assets/icon.png"),
+      avatar: require("../assets/boy.png"),
     },
   ];
 
@@ -60,20 +59,34 @@ const Home = () => {
     <ScrollView style={styles.container}>
       <View style={styles.container}>
         <View style={styles.header}>
-          <Text style={styles.headerText}>Welcome Back</Text>
-          <Text style={styles.headerText}>Let's find your top Developer!</Text>
-          <Image
-            source={require("../assets/Abeer3.jpg")}
-            style={styles.profileImage}
-          />
-        </View>
-        <View style={styles.searchContainer}>
-          <TextInput
-            style={styles.searchInput}
-            placeholder="Search development issue..."
-            value={searchQuery}
-            onChangeText={setSearchQuery}
-          />
+          <View style={styles.flex}>
+            <Image
+              source={require("../assets/hamburger.png")}
+              style={styles.iconImage}
+            />
+            <Image
+              source={require("../assets/Abeer3.jpg")}
+              style={styles.iconImage}
+            />
+          </View>
+          <View style={styles.content}>
+            <Text style={styles.headerText}>Welcome Back</Text>
+            <Text style={styles.headerText}>
+              Let's find your top Developer!
+            </Text>
+          </View>
+          <View style={styles.searchContainer}>
+            <TextInput
+              style={styles.searchInput}
+              placeholder="Search development issue..."
+              value={searchQuery}
+              onChangeText={setSearchQuery}
+            />
+            <Image
+              source={require("../assets/search.png")}
+              style={styles.profileImage}
+            />
+          </View>
         </View>
         <View style={styles.categoriesContainer}>
           <Text style={styles.categoriesTitle}>Categories</Text>
@@ -124,30 +137,73 @@ const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: "#F8F8F8",
   },
+  flex: {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "space-around",
+    width: "100%",
+    gap: 250,
+    alignItems: "center",
+  },
+  content: {
+    paddingTop: 30,
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
   header: {
-    backgroundColor: "#673AB7",
+    // deaaff
+    backgroundColor: "#48cae4",
+    paddingTop: 50,
+    marginBottom: 10,
     padding: 20,
+    borderBottomEndRadius: 20,
+    borderBottomStartRadius: 20,
     alignItems: "center",
     justifyContent: "center",
   },
   headerText: {
+    fontFamily: "Robbins",
     color: "#FFFFFF",
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 10,
   },
   profileImage: {
+    position: "absolute",
+    top: 28,
+    marginLeft: 30,
+    zIndex: 10,
+    width: 25,
+    height: 25,
+    borderRadius: 10,
+  },
+  iconImage: {
     width: 40,
     height: 40,
     borderRadius: 20,
   },
   searchContainer: {
+    width: "100%",
     padding: 15,
   },
   searchInput: {
     backgroundColor: "#FFFFFF",
     padding: 10,
+    paddingLeft: 60,
+    paddingVertical: 14,
     borderRadius: 10,
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 5,
+    width: "100%",
+    fontSize: 16,
+    marginBottom: 20,
   },
   categoriesContainer: {
     padding: 15,
@@ -158,8 +214,11 @@ const styles = StyleSheet.create({
     marginBottom: 10,
   },
   categoriesGrid: {
+    display: "flex",
+    alignItems: "center",
     flexDirection: "row",
-    justifyContent: "space-between",
+    justifyContent: "space-evenly",
+    paddingLeft: 5,
   },
   categoryItem: {
     backgroundColor: "#FFFFFF",
@@ -168,6 +227,14 @@ const styles = StyleSheet.create({
     flex: 1,
     marginRight: 10,
     alignItems: "center",
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.2,
+    shadowRadius: 3.84,
+    elevation: 5,
   },
   categoryIcon: {
     width: 30,
@@ -181,6 +248,14 @@ const styles = StyleSheet.create({
     padding: 15,
   },
   doctorItem: {
+    shadowColor: "#000",
+    shadowOffset: {
+      width: 0,
+      height: 2,
+    },
+    shadowOpacity: 0.1,
+    shadowRadius: 3.84,
+    elevation: 3,
     backgroundColor: "#FFFFFF",
     padding: 15,
     borderRadius: 10,
@@ -202,7 +277,7 @@ const styles = StyleSheet.create({
   },
   doctorSpecialty: {
     fontSize: 14,
-    color: "#673AB7",
+    color: "#0077b6",
   },
   doctorLocation: {
     fontSize: 12,
@@ -220,7 +295,7 @@ const styles = StyleSheet.create({
     fontSize: 12,
   },
   appointmentButton: {
-    backgroundColor: "#673AB7",
+    backgroundColor: "#48cae4",
     padding: 10,
     borderRadius: 10,
     marginTop: 10,
@@ -247,7 +322,7 @@ const styles = StyleSheet.create({
     elevation: 2,
   },
   addButton: {
-    backgroundColor: "#673AB7",
+    backgroundColor: "#87CEEB",
     padding: 10,
     borderRadius: 20,
     elevation: 2,
