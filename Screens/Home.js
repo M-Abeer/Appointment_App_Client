@@ -35,7 +35,7 @@ const Home = () => {
       specialty: "Full Stack Dev",
       location: "Multan,Pakistan",
       rating: 4.8,
-      avatar: require("../assets/boy1.png"),
+      avatar: require("../assets/Abeer3.jpg"),
     },
     {
       id: "m-areeb",
@@ -43,7 +43,7 @@ const Home = () => {
       specialty: "ML Engineer",
       location: "London, England",
       rating: 4.5,
-      avatar: require("../assets/boy.png"),
+      avatar: require("../assets/Abeer2.jpg"),
     },
   ];
 

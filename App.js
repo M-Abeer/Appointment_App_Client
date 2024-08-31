@@ -36,7 +36,8 @@ const App = () => {
         <Tab.Screen
           name="Top Developers"
           options={{
-            headerShown: true,
+            headerShown: false,
+            headerStyle: { borderBottomWidth: 0 },
             tabBarIcon: ({ focused, color, size }) => (
               <Image
                 source={require("./assets/search.png")}
@@ -53,7 +54,7 @@ const App = () => {
         <Tab.Screen
           name="Profile"
           options={{
-            headerShown: true,
+            headerShown: false,
             tabBarIcon: ({ focused, color, size }) => (
               <Image
                 source={require("./assets/user.png")}

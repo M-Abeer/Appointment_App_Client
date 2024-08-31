@@ -1,61 +1,74 @@
 import React from "react";
 import {
-  StyleSheet,
-  Text,
   View,
+  Text,
+  StyleSheet,
   Image,
-  TouchableOpacity,
   TextInput,
+  TouchableOpacity,
   ScrollView,
 } from "react-native";
 
 const Search = () => {
   return (
-    <View style={styles.container}>
-      <View style={styles.searchContainer}>
-        <Image
-          source={require("../assets/icon.png")}
-          style={styles.searchIcon}
-        />
-        <TextInput style={styles.searchInput} placeholder="Search Doctor" />
+    <ScrollView>
+      <View style={styles.container}>
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Top Developers</Text>
+        </View>
+        <View style={styles.searchContainer}>
+          <Image
+            source={require("../assets/search.png")}
+            style={styles.profileImage}
+          />
+          <TextInput
+            style={styles.searchInput}
+            placeholder="Search Developers..."
+          />
+        </View>
+        <View style={styles.doctorList}>
+          <DoctorCard
+            name="Muhammad Areeb"
+            specialty="ML Engineer"
+            location="London, England"
+            rating="4.8"
+            image={require("../assets/Abeer2.jpg")}
+          />
+          <DoctorCard
+            name="Muhammad Asad"
+            specialty="UI|UX Designer"
+            location="Lahore, Pakistan"
+            rating="4.8"
+            image={require("../assets/Abeer1.jpg")}
+          />
+          <DoctorCard
+            name="Muhammad Ahmad"
+            specialty="SQA Engineer"
+            location="Islamabad,Pakistan"
+            rating="4.8"
+            image={require("../assets/Abeer5.jpg")}
+          />
+          <DoctorCard
+            name="Muhammad Ali"
+            specialty="Game Developer"
+            location="Dubai, UAE"
+            rating="4.8"
+            image={require("../assets/Abeer4.jpg")}
+          />
+          <DoctorCard
+            name="Muhammad Abeer"
+            specialty="Web & App Dev"
+            location="Multan, Pakistan"
+            rating="4.8 "
+            image={require("../assets/Abeer3.jpg")}
+          />
+        </View>
       </View>
-      <ScrollView style={styles.doctorsList}>
-        <DoctorCard
-          name="Dr. Rodger Struck"
-          specialty="Heart Surgeon, London, England"
-          rating={4.8}
-          image={require("../assets/icon.png")}
-        />
-        <DoctorCard
-          name="Dr. Kathy Pacheco"
-          specialty="Heart Surgeon, London, England"
-          rating={4.8}
-          image={require("../assets/icon.png")}
-        />
-        <DoctorCard
-          name="Dr. Lorri Warf"
-          specialty="General Dentist"
-          rating={4.8}
-          image={require("../assets/icon.png")}
-        />
-        <DoctorCard
-          name="Dr. Chris Glasser"
-          specialty="Heart Surgeon, London, England"
-          rating={4.8}
-          image={require("../assets/icon.png")}
-        />
-        <DoctorCard
-          name="Dr. Kenneth Allen"
-          specialty="General Dentist"
-          rating={4.8}
-          image={require("../assets/icon.png")}
-        />
-      </ScrollView>
-    </View>
+    </ScrollView>
   );
 };
 
-const DoctorCard = ({ name, specialty, rating, image }) => {
+const DoctorCard = ({ name, specialty, location, rating, image }) => {
   return (
     <View style={styles.doctorCard}>
       <View style={styles.doctorInfo}>
@@ -63,22 +76,35 @@ const DoctorCard = ({ name, specialty, rating, image }) => {
         <View style={styles.doctorDetails}>
           <Text style={styles.doctorName}>{name}</Text>
           <Text style={styles.doctorSpecialty}>{specialty}</Text>
+          {location && <Text style={styles.doctorLocation}>{location}</Text>}
         </View>
       </View>
       <View style={styles.doctorActions}>
-        <Text style={styles.doctorRating}>{rating}</Text>
-        <TouchableOpacity style={styles.appointmentButton}>
-          <Text style={styles.appointmentButtonText}>Appointment</Text>
+        <View>
+          <Text style={styles.doctorRating}>
+            {rating}
+            <Image
+              style={styles.img}
+              source={require("../assets/star.png")}
+            ></Image>
+          </Text>
+          {/* <Image
+            source={require("../assets/home.png")}
+            style={styles.chatIcon}
+          /> */}
+        </View>
+        <TouchableOpacity style={styles.button}>
+          <Text style={styles.buttonText}>Appointment</Text>
         </TouchableOpacity>
-        <TouchableOpacity style={styles.chatButton}>
+        <TouchableOpacity style={styles.btns}>
           <Image
-            source={require("../assets/icon.png")}
+            source={require("../assets/heart.png")}
             style={styles.chatIcon}
           />
         </TouchableOpacity>
-        <TouchableOpacity style={styles.heartButton}>
+        <TouchableOpacity style={styles.btns}>
           <Image
-            source={require("../assets/icon.png")}
+            source={require("../assets/heart.png")}
             style={styles.heartIcon}
           />
         </TouchableOpacity>
@@ -90,19 +116,12 @@ const DoctorCard = ({ name, specialty, rating, image }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#f2f2f2",
+    backgroundColor: "#F7F8FA",
   },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
-    paddingHorizontal: 20,
-    paddingVertical: 15,
-    backgroundColor: "#fff",
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 2,
+    marginTop: 10,
+    padding: 30,
+    backgroundColor: "#FFFFFF",
   },
   backButton: {
     padding: 10,
@@ -111,52 +130,60 @@ const styles = StyleSheet.create({
     width: 20,
     height: 20,
   },
-  headerTitle: {
-    fontSize: 20,
+  profileImage: {
+    width: 30,
+    height: 30,
+    borderRadius: 10,
+  },
+  headerText: {
+    textAlign: "center",
+    fontSize: 18,
     fontWeight: "bold",
-    marginLeft: 15,
+  },
+  img: {
+    width: 16,
+    height: 16,
   },
   searchContainer: {
+    width: "90%",
+    display: "flex",
     flexDirection: "row",
     alignItems: "center",
     paddingHorizontal: 20,
+    backgroundColor: "#FFFFFF",
+    marginTop: 10,
+    paddingHorizontal: 20,
+    elevation: 3,
     paddingVertical: 10,
-    backgroundColor: "#fff",
-    margin: 10,
     borderRadius: 10,
+    marginHorizontal: "auto",
+    gap: 10,
   },
-  searchIcon: {
-    width: 20,
-    height: 20,
-    marginRight: 10,
-  },
-  searchInput: {
-    flex: 1,
+
+  searchPlaceholder: {
     fontSize: 16,
+    color: "#B0B0B0",
   },
-  doctorsList: {
-    padding: 10,
+  doctorList: {
+    marginTop: 20,
   },
   doctorCard: {
-    backgroundColor: "#fff",
-    padding: 15,
-    marginBottom: 10,
+    backgroundColor: "#FFFFFF",
+    padding: 20,
     borderRadius: 10,
-    shadowColor: "#000",
-    shadowOffset: { width: 0, height: 2 },
-    shadowOpacity: 0.2,
-    shadowRadius: 2,
-    elevation: 2,
+    marginHorizontal: 20,
+    marginBottom: 10,
+    elevation: 3,
   },
   doctorInfo: {
     flexDirection: "row",
     alignItems: "center",
   },
   doctorImage: {
-    width: 50,
-    height: 50,
+    width: 60,
+    height: 60,
     borderRadius: 50,
-    marginRight: 15,
+    marginRight: 20,
   },
   doctorDetails: {
     flex: 1,
@@ -167,37 +194,41 @@ const styles = StyleSheet.create({
   },
   doctorSpecialty: {
     fontSize: 14,
-    color: "#777",
+    color: "#666666",
+  },
+  doctorLocation: {
+    fontSize: 12,
+    color: "#999999",
   },
   doctorActions: {
     flexDirection: "row",
     alignItems: "center",
-    justifyContent: "space-between",
     marginTop: 10,
+    paddingLeft: 16,
   },
   doctorRating: {
     fontSize: 16,
     fontWeight: "bold",
+    marginRight: 12,
   },
-  appointmentButton: {
-    backgroundColor: "#b973d8",
-    paddingHorizontal: 20,
-    paddingVertical: 8,
+  button: {
+    marginLeft: 10,
+    padding: 10,
+    borderRadius: 5,
+    backgroundColor: "#48cae4",
+    marginRight: 10,
+  },
+  btns: {
+    padding: 10,
     borderRadius: 5,
   },
-  appointmentButtonText: {
-    color: "#fff",
+  buttonText: {
+    color: "#FFFFFF",
     fontSize: 14,
-  },
-  chatButton: {
-    padding: 5,
   },
   chatIcon: {
     width: 20,
     height: 20,
-  },
-  heartButton: {
-    padding: 5,
   },
   heartIcon: {
     width: 20,

@@ -18,42 +18,43 @@ const About = () => {
   return (
     <ScrollView>
       <View style={styles.container}>
-        {/* <View style={styles.header}>
-          <TouchableOpacity style={styles.backButton}>
-            <Image
-              source={require("../assets/icon.png")}
-              style={styles.backArrow}
-            />
-          </TouchableOpacity>
-          <Text style={styles.title}>Appointment</Text>
-        </View> */}
+        <View style={styles.header}>
+          <Text style={styles.headerText}>Appointment</Text>
+        </View>
         <View style={styles.profile}>
           <Image
-            source={require("../assets/Abeer2.jpg")}
+            source={require("../assets/Abeer3.jpg")}
             style={styles.profileImage}
           />
           <Text style={styles.doctorName}>Muhammad Abeer</Text>
-          <Text style={styles.doctorSpeciality}>Web & App Expert</Text>
+          <Text style={styles.doctorSpeciality}>
+            <Image
+              style={styles.abc}
+              source={require("../assets/diamond.png")}
+            ></Image>
+            Web & App Expert
+          </Text>
         </View>
         <View style={styles.stats}>
           <View style={styles.stat}>
-            <Text style={styles.statNumber}>150+</Text>
+            <Text style={styles.statNumber1}>150+</Text>
             <Text style={styles.statLabel}>Projects</Text>
           </View>
           <View style={styles.stat}>
-            <Text style={styles.statNumber}>02+</Text>
+            <Text style={styles.statNumber2}>02+</Text>
             <Text style={styles.statLabel}>Exp. years</Text>
           </View>
           <View style={styles.stat}>
-            <Text style={styles.statNumber}>284+</Text>
+            <Text style={styles.statNumber3}>284+</Text>
             <Text style={styles.statLabel}>Reviews</Text>
           </View>
         </View>
         <View style={styles.about}>
-          <Text style={styles.aboutTitle}>About Doctor</Text>
+          <Text style={styles.aboutTitle}>About Developer</Text>
           <Text style={styles.aboutText}>
-            Dr. Maria Waston is the top most Cardiologist specialist in Nanyang
-            Hospotalat London. She is available for private consultation.
+            Muhammad Abeer is the top most Web specialist. He is available for
+            private consultation.He got many awards in Web Competitions and also
+            Google Certified.
           </Text>
         </View>
         <View style={styles.schedules}>
@@ -108,9 +109,9 @@ const About = () => {
             <TouchableOpacity style={styles.timeSlot}>
               <Text style={styles.timeSlotText}>01:00AM</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.timeSlot}>
+            {/* <TouchableOpacity style={styles.timeSlot}>
               <Text style={styles.timeSlotText}>02:00AM</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
           <View style={styles.timeSlots}>
             <TouchableOpacity style={styles.timeSlot}>
@@ -122,9 +123,9 @@ const About = () => {
             <TouchableOpacity style={styles.timeSlot}>
               <Text style={styles.timeSlotText}>05:00AM</Text>
             </TouchableOpacity>
-            <TouchableOpacity style={styles.timeSlot}>
+            {/* <TouchableOpacity style={styles.timeSlot}>
               <Text style={styles.timeSlotText}>06:00AM</Text>
-            </TouchableOpacity>
+            </TouchableOpacity> */}
           </View>
         </View>
         <TouchableOpacity style={styles.bookButton}>
@@ -138,17 +139,25 @@ const About = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: "#F2F2F2",
+    backgroundColor: "#FFFFFF",
     padding: 20,
   },
   header: {
-    flexDirection: "row",
-    alignItems: "center",
-    marginBottom: 20,
+    // marginTop: 10,
+    padding: 30,
+    backgroundColor: "#FFFFFF",
   },
-  backButton: {
-    padding: 10,
+  headerText: {
+    textAlign: "center",
+    fontSize: 18,
+    fontWeight: "bold",
   },
+  // header: {
+  //   flexDirection: "row",
+  //   alignItems: "center",
+  //   marginBottom: 20,
+  // },
+
   backArrow: {
     width: 20,
     height: 20,
@@ -178,19 +187,38 @@ const styles = StyleSheet.create({
     marginTop: 5,
   },
   stats: {
+    padding: 10,
     flexDirection: "row",
     justifyContent: "space-between",
     marginBottom: 20,
+    backgroundColor: "#48cae4",
+    borderRadius: 10,
+  },
+  abc: {
+    height: 20,
+    width: 20,
+    marginRight: 6,
   },
   stat: {
     backgroundColor: "#F5F5F5",
-    padding: 15,
+    padding: 10,
     borderRadius: 10,
     flex: 1,
     alignItems: "center",
     margin: 5,
   },
-  statNumber: {
+  statNumber1: {
+    color: "#48cae4",
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  statNumber2: {
+    color: "#9d4edd",
+    fontSize: 24,
+    fontWeight: "bold",
+  },
+  statNumber3: {
+    color: "#ffb5a7",
     fontSize: 24,
     fontWeight: "bold",
   },
@@ -224,14 +252,14 @@ const styles = StyleSheet.create({
   },
   day: {
     backgroundColor: "#F5F5F5",
-    padding: 15,
+    padding: 10,
     borderRadius: 10,
     flex: 1,
     alignItems: "center",
     margin: 5,
   },
   selectedDay: {
-    backgroundColor: "#E6E6E6",
+    backgroundColor: "#48cae4",
   },
   dayNumber: {
     fontSize: 18,
@@ -255,9 +283,9 @@ const styles = StyleSheet.create({
   },
   timeSlot: {
     backgroundColor: "#F5F5F5",
-    padding: 15,
     borderRadius: 10,
     flex: 1,
+    padding: 16,
     alignItems: "center",
     margin: 5,
   },
@@ -265,7 +293,7 @@ const styles = StyleSheet.create({
     fontSize: 16,
   },
   bookButton: {
-    backgroundColor: "#800080",
+    backgroundColor: "#48cae4",
     padding: 15,
     borderRadius: 10,
     alignItems: "center",
